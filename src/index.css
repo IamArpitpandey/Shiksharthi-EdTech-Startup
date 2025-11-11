@@ -15,3 +15,7 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.4s ease-in-out;
 }
+.card-glow {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3),
+              0 0 30px rgba(147, 51, 234, 0.15);
+}
