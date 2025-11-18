@@ -1,99 +1,311 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaPlayCircle, FaArrowRight } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
+
+// images
+import student1 from "./assets/student1.png";
+import student2 from "./assets/student2.png";
 
 export default function Home() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
-      {/* Floating gradient blob */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.3, scale: 1.2 }}
-        transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute top-[-5rem] left-[-5rem] w-[400px] h-[400px] bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full blur-3xl opacity-20"
-      ></motion.div>
+    <div className="w-full overflow-hidden">
 
-      <div className="relative container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        {/* LEFT: TEXT ANIMATION */}
+      {/* ---------------------------------------------------------------- */}
+      {/* ⭐ HERO SECTION (student ask/reply) */}
+      {/* ---------------------------------------------------------------- */}
+
+      <section className="relative overflow-hidden min-h-[85vh] bg-gradient-to-br from-white via-gray-50 to-indigo-50 select-none flex items-center">
+
+        {/* soft blobs */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.h1
-            className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight"
-            initial={{ y: -30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+          className="absolute top-[10%] left-[5%] w-[320px] h-[320px] rounded-full bg-indigo-200 blur-[140px] opacity-20"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+
+        <motion.div
+          className="absolute bottom-[10%] right-[5%] w-[300px] h-[300px] rounded-full bg-purple-200 blur-[140px] opacity-20"
+          animate={{ scale: [1, 0.9, 1] }}
+          transition={{ duration: 11, repeat: Infinity }}
+        />
+
+        <div className="container mx-auto px-6 py-20 relative z-10 grid md:grid-cols-2 gap-12">
+
+          {/* LEFT CONTENT */}
+          <div className="flex flex-col justify-center">
+
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900"
+            >
+              Learn Smarter,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                Grow Faster
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="mt-6 text-gray-700 text-lg leading-relaxed max-w-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
+            >
+              Join <strong>Shiksharthi</strong> — your AI-powered learning
+              companion. Recorded & live classes, curated notes, quizzes,
+              and smart dashboards — all in one place.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.7 }}
+              className="mt-4 text-xl font-medium text-gray-700"
+            >
+              <Typewriter
+                words={[
+                  "Smart Video Summaries 📘",
+                  "AI Flashcards 🧠",
+                  "Personal Dashboard 📊",
+                  "Adaptive Quizzes 🎯",
+                ]}
+                loop
+                cursor
+                typeSpeed={50}
+                deleteSpeed={40}
+                delaySpeed={2000}
+              />
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.7 }}
+              className="flex gap-4 mt-8"
+            >
+              <button className="px-7 py-3 rounded-xl text-white bg-gradient-to-r from-indigo-600 to-purple-600 shadow-md hover:scale-105 transition">
+                🚀 Get Started
+              </button>
+
+              <button className="px-7 py-3 rounded-xl border border-indigo-300 bg-white text-indigo-700 hover:bg-indigo-50 hover:scale-105 transition">
+                🎥 Explore Videos
+              </button>
+            </motion.div>
+          </div>
+
+          {/* RIGHT — STUDENT ASK/ANSWER */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="relative flex justify-center items-center"
           >
-            Learn smarter,  
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-500 text-transparent bg-clip-text">
-              achieve higher.
+            {/* big circle */}
+            <div className="absolute w-[360px] h-[360px] bg-white/70 backdrop-blur-xl rounded-full shadow-xl border border-gray-200 overflow-hidden flex items-center justify-center">
+              <img
+                src="/logo192.png"
+                alt="Shiksharthi Logo"
+                className="w-44 h-44 opacity-90"
+              />
+            </div>
+
+            {/* student ask */}
+            <motion.div
+              className="absolute left-0 top-8 flex flex-col items-center"
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ repeat: Infinity, duration: 4 }}
+            >
+              <img
+                src={student1}
+                className="w-28 h-28 rounded-full border-4 border-white shadow-lg"
+              />
+
+              <div className="mt-3 bg-black text-white shadow-md px-5 py-2 rounded-2xl text-sm">
+                Why Shiksharthi?
+              </div>
+            </motion.div>
+
+            {/* student reply */}
+            <motion.div
+              className="absolute right-0 bottom-10 flex flex-col items-center"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ repeat: Infinity, duration: 4 }}
+            >
+              <img
+                src={student2}
+                className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
+              />
+              <div className="mt-3 bg-black text-white shadow-md px-6 py-2 rounded-2xl text-sm">
+                Because we make learning 10× smarter with AI!
+              </div>
+            </motion.div>
+
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* ⭐ SECTION 2 — WHY SHIKSHARTHI (full proper section below hero) */}
+      {/* ---------------------------------------------------------------- */}
+      {/* ---------------------------------------------------------------- */}
+      {/* ⭐ CENTERED WHY SHIKSHARTHI SECTION (FULL HORIZONTAL) */}
+      {/* ---------------------------------------------------------------- */}
+
+      <section className="relative py-24 bg-gradient-to-br from-white via-gray-50 to-indigo-50 overflow-hidden text-center">
+
+        <div className="container mx-auto px-6 relative z-10 max-w-3xl">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+              Why{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                Shiksharthi?
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-gray-700 text-lg leading-relaxed">
+              Because Shiksharthi helps students understand faster, revise smarter,
+              and stay motivated using modern AI-driven learning tools — making
+              education simple, adaptive, and effective.
+            </p>
+
+            {/* Bullet Points */}
+            <ul className="mt-10 space-y-4 text-gray-700 text-left mx-auto w-fit">
+              <li className="flex items-center gap-3">
+                <span className="w-3 h-3 bg-indigo-500 rounded-full"></span>
+                AI-based summaries for quick revision
+              </li>
+
+              <li className="flex items-center gap-3">
+                <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
+                Personal flashcards based on weaknesses
+              </li>
+
+              <li className="flex items-center gap-3">
+                <span className="w-3 h-3 bg-pink-500 rounded-full"></span>
+                Smart performance dashboard
+              </li>
+
+              <li className="flex items-center gap-3">
+                <span className="w-3 h-3 bg-blue-400 rounded-full"></span>
+                Recorded + Live classes for complete concept clarity
+              </li>
+            </ul>
+
+          </motion.div>
+        </div>
+      </section>
+
+      {/* -------------------------------------------------------------- */}
+      {/* ⭐ SECTION 3 – HOW SHIKSHARTHI WORKS */}
+      {/* -------------------------------------------------------------- */}
+
+      <section className="py-24 bg-gradient-to-br from-white via-indigo-50/30 to-purple-50/20 overflow-hidden">
+
+        <div className="container mx-auto px-6 max-w-5xl text-center">
+
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-extrabold text-gray-900"
+          >
+            How{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+              Shiksharthi Works
             </span>
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
-            className="mt-6 text-gray-700 text-lg leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mt-4 text-gray-700 text-lg max-w-2xl mx-auto"
           >
-            Join <strong>Shiksharthi</strong> — your AI-powered learning
-            companion. Recorded & live classes, curated notes, quizzes, and
-            smart dashboards — all in one place.
+            Your learning journey is designed to be fast, smart and effective —
+            powered by AI.
           </motion.p>
 
-          {/* Buttons */}
-          <motion.div
-            className="mt-8 flex gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            <Link
-              to="/videos"
-              className="bg-blue-600 text-white flex items-center gap-2 px-6 py-3 rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-blue-300 transition-all duration-300"
-            >
-              <FaPlayCircle /> Explore Videos
-            </Link>
-            <Link
-              to="/signup"
-              className="border-2 border-blue-600 text-blue-700 px-6 py-3 rounded-lg hover:bg-blue-50 hover:shadow-md transition-all duration-300"
-            >
-              Get Started
-            </Link>
-          </motion.div>
-        </motion.div>
+          {/* 3 STEPS */}
+          <div className="mt-16 grid md:grid-cols-3 gap-12">
 
-        {/* RIGHT: DEMO VIDEO / IMAGE CARD */}
-        <motion.div
-          className="relative bg-white rounded-2xl shadow-lg p-6"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          <div className="h-64 w-full bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex flex-col justify-center items-center">
-            <FaPlayCircle className="text-5xl text-blue-500 mb-2 animate-pulse" />
-            <p className="text-gray-500">Watch sample lecture</p>
-          </div>
-          <p className="mt-4 text-sm text-gray-500 text-center">
-            “Every concept explained visually with clarity.”
-          </p>
-          <div className="absolute -bottom-5 right-5 bg-white shadow-md rounded-full p-3 hover:translate-x-1 transition-all duration-300 cursor-pointer">
-            <FaArrowRight className="text-blue-600 text-xl" />
-          </div>
-        </motion.div>
-      </div>
+            {/* STEP 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="group bg-white shadow-lg rounded-2xl p-8 border hover:shadow-2xl hover:scale-[1.03] transition-all"
+            >
+              <div className="w-16 h-16 mx-auto rounded-full bg-indigo-100 flex items-center justify-center">
+                <img src="/logo192.png" className="w-10 opacity-80" />
+              </div>
 
-      {/* Floating shape right corner */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={{ opacity: 0.4, scale: 1 }}
-        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute bottom-[-5rem] right-[-5rem] w-[350px] h-[350px] bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full blur-3xl opacity-30"
-      ></motion.div>
-    </section>
+              <h3 className="mt-6 text-xl font-bold text-gray-900">1. Learn</h3>
+              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                Watch recorded or live classes designed for board exams,
+                JEE/NEET and foundation levels.
+              </p>
+            </motion.div>
+
+            {/* STEP 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="group bg-white shadow-lg rounded-2xl p-8 border hover:shadow-2xl hover:scale-[1.03] transition-all"
+            >
+              <div className="w-16 h-16 mx-auto rounded-full bg-purple-100 flex items-center justify-center">
+                <span className="text-3xl">🧠</span>
+              </div>
+
+              <h3 className="mt-6 text-xl font-bold text-gray-900">2. Revise with AI</h3>
+              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                Get instant summaries, flashcards and automatic transcripts
+                created using our AI engine.
+              </p>
+            </motion.div>
+
+            {/* STEP 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="group bg-white shadow-lg rounded-2xl p-8 border hover:shadow-2xl hover:scale-[1.03] transition-all"
+            >
+              <div className="w-16 h-16 mx-auto rounded-full bg-pink-100 flex items-center justify-center">
+                <span className="text-3xl">📊</span>
+              </div>
+
+              <h3 className="mt-6 text-xl font-bold text-gray-900">
+                3. Track & Improve
+              </h3>
+              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                Smart dashboard tells your weak areas, strengths and suggests
+                what to study next.
+              </p>
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   );
 }
