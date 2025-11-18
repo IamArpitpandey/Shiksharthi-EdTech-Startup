@@ -1,16 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes, FaSignOutAlt, FaUser } from "react-icons/fa";
 
-export default function Navbar() {
+export default function Navbar({ isLoggedIn, userRole, onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const navLinks = [
+  // Define links based on login status
+  const baseLinks = [
     { name: "Videos", path: "/videos" },
     { name: "Library", path: "/library" },
     { name: "Quizzes", path: "/quiz" },
-    { name: "Dashboard", path: "/dashboard" },
   ];
+  
+  // Add Dashboard if logged in
+  const navLinks = isLoggedIn 
+    ? [...baseLinks, { name: "Dashboard", path: "/dashboard" }] 
+    : baseLinks;
+
+  const handleLogout = () => {
+    onLogout();
+    setMenuOpen(false); // Close mobile menu
+    navigate("/"); // Redirect to home page
+  };
 
   return (
     <nav className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
@@ -36,17 +48,34 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Login Buttons */}
+        {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Link to="/login" className="text-sm hover:text-blue-600">
-            Log in
-          </Link>
-          <Link
-            to="/signup"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition"
-          >
-            Sign up
-          </Link>
+          {isLoggedIn ? (
+            <>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                 <FaUser className="text-blue-600"/> 
+                 <span className="capitalize">{userRole}</span>
+              </div>
+              <button 
+                onClick={handleLogout}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-600 transition flex items-center gap-2"
+              >
+                <FaSignOutAlt /> Log out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="text-sm hover:text-blue-600">
+                Log in
+              </Link>
+              <Link
+                to="/signup"
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition"
+              >
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Hamburger */}
@@ -72,20 +101,38 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/login"
-              onClick={() => setMenuOpen(false)}
-              className="text-blue-600 font-semibold"
-            >
-              Log in
-            </Link>
-            <Link
-              to="/signup"
-              onClick={() => setMenuOpen(false)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              Sign up
-            </Link>
+
+            {isLoggedIn ? (
+              <>
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <FaUser className="text-blue-600"/> 
+                    <span className="capitalize">{userRole}</span>
+                </div>
+                <button 
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition flex items-center gap-2"
+                >
+                  <FaSignOutAlt /> Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-blue-600 font-semibold"
+                >
+                  Log in
+                </Link>
+                <Link
+                  to="/signup"
+                  onClick={() => setMenuOpen(false)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}
