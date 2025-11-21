@@ -119,6 +119,7 @@ export default function Home() {
             >
               <img
                 src={student1}
+                alt="Student avatar asking a question"
                 className="w-28 h-28 rounded-full border-4 border-white shadow-lg"
               />
 
@@ -135,6 +136,7 @@ export default function Home() {
             >
               <img
                 src={student2}
+                alt="Student avatar replying"
                 className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
               />
               <div className="mt-3 bg-black text-white shadow-md px-6 py-2 rounded-2xl text-sm">
@@ -251,7 +253,7 @@ export default function Home() {
               className="group bg-white shadow-lg rounded-2xl p-8 border hover:shadow-2xl hover:scale-[1.03] transition-all"
             >
               <div className="w-16 h-16 mx-auto rounded-full bg-indigo-100 flex items-center justify-center">
-                <img src="/logo192.png" className="w-10 opacity-80" />
+                <img src="/logo192.png" alt="Shiksharthi logo" className="w-10 opacity-80" />
               </div>
 
               <h3 className="mt-6 text-xl font-bold text-gray-900">1. Learn</h3>
