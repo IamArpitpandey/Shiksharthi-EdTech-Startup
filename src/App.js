@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -9,23 +9,59 @@ import Quiz from "./pages/Quiz";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { onAuthStateChanged, signOut } from "firebase/auth"; //  Firebase functions
+import { auth } from "./firebase"; //  Firebase auth object
 
 export default function App() {
-  // Global state for authentication and user role
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userRole, setUserRole] = useState(null); // 'student', 'teacher', or 'parent'
+  const [userRole, setUserRole] = useState(null); 
+  const [loading, setLoading] = useState(true); 
 
-  // Function to handle login and set the role
+  //  FIREBASE STATE LISTENER
+  useEffect(() => {
+    // Listens for sign-in, sign-out, or session changes (like page refresh)
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setIsLoggedIn(true);
+        
+        setUserRole("student"); 
+      } else {
+        // User is signed out
+        setIsLoggedIn(false);
+        setUserRole(null);
+      }
+      setLoading(false);
+    });
+
+    
+    return () => unsubscribe();
+  }, []); 
+
+  // Function to handle login 
   const handleLogin = (role) => {
     setIsLoggedIn(true);
     setUserRole(role);
   };
 
-  // Function to handle logout
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserRole(null);
+  // Function to handle logout using Firebase
+  const handleLogout = async () => {
+    try {
+        await signOut(auth); 
+        
+    } catch (error) {
+        console.error("Error during logout:", error);
+    }
   };
+
+  
+  if (loading) {
+    return (
+        <div className="min-h-screen flex items-center justify-center">
+            <h1 className="text-xl text-indigo-600">Loading user session...</h1>
+        </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
