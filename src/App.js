@@ -12,8 +12,8 @@ import Signup from "./pages/Signup";
 
 export default function App() {
   // Global state for authentication and user role
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userRole, setUserRole] = useState(null); // 'student', 'teacher', or 'parent'
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userRole, setUserRole] = useState("student"); // 'student', 'teacher', or 'parent'
 
   // Function to handle login and set the role
   const handleLogin = (role) => {

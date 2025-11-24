@@ -64,14 +64,6 @@ export default function Navbar() {
                 >
                   {link.name}
                 </Link>
-
-                {/* 🌈 Animated underline */}
-                <motion.span
-                  layoutId={isActive ? "activeUnderline" : undefined}
-                  className={`absolute left-0 bottom-0 w-full h-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ${
-                    isActive ? "opacity-100" : "opacity-0 group-hover:opacity-60"
-                  } transition-opacity duration-300`}
-                ></motion.span>
               </motion.div>
             );
           })}
