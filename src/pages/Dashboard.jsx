@@ -20,8 +20,8 @@ const StudentDashboard = () => (
           <p className="text-gray-600">Here's your quick snapshot for today.</p>
         </div>
         <div className="flex gap-3">
-          <a href="/videos" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Explore Videos</a>
-          <a href="/quiz" className="border-2 border-blue-600 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-50 transition">Start Quiz</a>
+          <a href="/videos" className="px-4 py-2 rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-95 transition">Explore Videos</a>
+          <a href="/quiz" className="border-2 border-indigo-400 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-50 transition">Start Quiz</a>
         </div>
       </div>
     </div>
@@ -225,7 +225,7 @@ const DashboardCard = ({ title, content, icon, color = "bg-blue-600", linkText }
 );
 
 const QuickButton = ({ text, href, icon, onClick }) => {
-  const commonClasses = "bg-blue-50 text-blue-700 font-semibold px-4 py-2 rounded-full flex items-center gap-2 hover:bg-blue-100 transition duration-150 shadow-sm";
+  const commonClasses = "bg-indigo-50 text-indigo-700 font-semibold px-4 py-2 rounded-full flex items-center gap-2 hover:bg-indigo-100 transition duration-150 shadow-sm";
 
   if (!href || href === "#") {
     return (
