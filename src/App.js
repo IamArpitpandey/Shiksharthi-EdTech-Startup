@@ -65,6 +65,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Temporary debug badge — remove after verification */}
+      <div className="fixed top-4 right-4 z-60 bg-indigo-600 text-white px-3 py-1 rounded shadow">App running</div>
       <Navbar isLoggedIn={isLoggedIn} userRole={userRole} onLogout={handleLogout} />
       <main className="flex-1 container mx-auto px-4 py-8">
         <Routes>
