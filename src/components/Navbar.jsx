@@ -1,90 +1,93 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react"; 
-
+import { Link } from "react-router-dom";
+import { LogIn, UserPlus, Menu, X } from "lucide-react";
+import { useState } from "react";
+import logo from "../pages/assets/logo1.jpg";
 export default function Navbar() {
-  const currentLocation = useLocation();
-
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Videos", path: "/videos" },
-    { name: "Library", path: "/library" },
-    { name: "Quiz", path: "/quiz" },
-    { name: "Dashboard", path: "/dashboard" },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7 }}
-      className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-indigo-100 shadow-sm"
-    >
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+    <nav className="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-white/80 border-b border-gray-200">
 
-        {/* 🎓 Shiksharthi Logo */}
-        <Link to="/" className="flex items-center gap-3 text-xl font-bold tracking-wide">
-          <motion.div
-            whileHover={{ rotate: -10, scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 shadow-lg"
-          >
-            <GraduationCap className="text-white w-6 h-6 drop-shadow-md" strokeWidth={2.5} />
-            <div className="absolute -bottom-1 w-full h-[3px] bg-gradient-to-r from-indigo-300 to-pink-300 rounded-full blur-[1px]" />
-          </motion.div>
+      <div className="px-6 py-4 flex justify-between items-center">
 
-          <div className="flex flex-col leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-2xl font-extrabold">
-              Shiksharthi
-            </span>
-            <span className="text-xs text-gray-500 tracking-widest uppercase">EdTech</span>
+        {/* ===== Left Brand Section ===== */}
+        <Link to="/" className="flex items-center gap-3 group">
+
+          {/* Circle Logo */}
+          <div className="w-10 h-10 rounded-full overflow-hidden shadow-md ring-2 ring-indigo-100 group-hover:ring-indigo-300 transition duration-300">
+            <img
+              src={logo}
+              alt="Shiksharthi Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
+
+          {/* Premium Brand Text */}
+          <span className="text-2xl font-bold tracking-tight text-indigo-700 hover:text-indigo-600 transition duration-300">
+  Shiksharthi
+</span>
+
+
         </Link>
 
-        {/* 🌈 Stylish Navbar Buttons */}
-        <div className="hidden md:flex gap-6 text-gray-700 font-medium">
-          {navLinks.map((link) => {
-            const isActive = currentLocation.pathname === link.path;
+        {/* ===== Desktop Menu ===== */}
+        <div className="hidden md:flex items-center gap-4">
 
-            return (
-              <motion.div
-                key={link.name}
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 250 }}
-                className="relative group"
-              >
-                <Link
-                  to={link.path}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 ${
-                    isActive
-                      ? "text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg"
-                      : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* 🔘 Auth Buttons */}
-        <div className="flex items-center gap-3">
           <Link
             to="/login"
-            className="px-4 py-2 text-sm border border-indigo-400 rounded-lg hover:bg-indigo-50 transition"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition duration-200"
           >
-            Log in
+            <LogIn size={18} />
+            Login
           </Link>
+
           <Link
             to="/signup"
-            className="px-4 py-2 text-sm rounded-lg text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:opacity-90 shadow-md"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-indigo-700 to-violet-600 text-white hover:scale-105 transition duration-200 shadow-lg"
           >
-            Sign up
+            <UserPlus size={18} />
+            Register
           </Link>
+
         </div>
+
+        {/* ===== Mobile Toggle ===== */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
       </div>
-    </motion.nav>
+
+      {/* ===== Mobile Dropdown ===== */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 shadow-md">
+          <div className="flex flex-col px-6 py-4 gap-4">
+
+            <Link
+              to="/login"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2"
+            >
+              <LogIn size={18} />
+              Login
+            </Link>
+
+            <Link
+              to="/signup"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-indigo-700 font-medium"
+            >
+              <UserPlus size={18} />
+              Register
+            </Link>
+
+          </div>
+        </div>
+      )}
+
+    </nav>
   );
 }

@@ -76,6 +76,7 @@ export default function Footer() {
         <p className="text-xs text-gray-400">
           © {new Date().getFullYear()} Shiksharthi EdTech. All Rights Reserved.
         </p>
+        
       </div>
     </footer>
   );
