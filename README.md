@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Shiksharthi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Shiksharthi is an EdTech learning platform designed to help students learn smarter through a focused, interactive study experience. The current project is a responsive React frontend with animated UI, student authentication flows, a protected dashboard, learning resources, educational videos, and quizzes.
+
+## Features
+
+- Responsive landing page for the Shiksharthi learning platform
+- Student registration and login screens with client-side form validation
+- Protected student dashboard
+- Study library for learning resources
+- Educational video section with React Player support
+- Quiz experience for practice and assessment
+- Responsive navigation and footer with mobile menu support
+- Motion-based interactions and a Tailwind CSS design system
+
+## Tech Stack
+
+- React 19
+- React Router DOM
+- Tailwind CSS
+- Firebase
+- Axios
+- Framer Motion
+- Lucide React and React Icons
+- React Player
+- Create React App
+
+## Project Structure
+
+```text
+src/
+├── components/       # Shared navigation, footer, and route protection
+├── context/          # Authentication context
+├── pages/            # Home, auth, dashboard, library, video, and quiz screens
+├── App.js            # Application routes
+├── index.js          # React entry point
+└── index.css         # Global styles
+```
+
+## Routes
+
+| Route | Description |
+| --- | --- |
+| `/` | Shiksharthi landing page |
+| `/signup` | Create a student account |
+| `/login` | Sign in to the platform |
+| `/dashboard` | Protected student dashboard |
+| `/library` | Browse learning resources |
+| `/videos` | Watch educational videos |
+| `/quiz` | Practice with quizzes |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or later
+- npm
+
+### Installation
+
+```bash
+git clone https://github.com/IamArpitpandey/Shiksharthi-EdTech-Startup.git
+cd Shiksharthi-EdTech-Startup
+npm install
+```
+
+### Run the development server
+
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` — start the development server
+- `npm test` — run the test suite in watch mode
+- `npm run build` — create an optimized production build
 
-### `npm start`
+## Authentication and Configuration
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Authentication and user state are currently handled through the React authentication context. If you connect Firebase or another backend, add the required configuration through environment variables rather than committing credentials to the repository.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Status
 
-### `npm test`
+Shiksharthi is an actively evolving frontend prototype. Backend services, persistent authentication, production content, and deployment configuration can be added as the platform develops.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## License
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+No license has been specified for this project yet.
